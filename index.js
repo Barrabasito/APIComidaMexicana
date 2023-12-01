@@ -11,6 +11,7 @@
 //npm i mysql
 //npm i mysql2
 //redoc express, al instalar te va generar otro tipo de documentacion
+//Investigacion de los principios de Api rest son como 5 o 6 una definicion de cada uno interfaz uniforme en un documento MD
 
 const { SwaggerTheme } = require('swagger-themes');
 const express=require('express');
@@ -28,11 +29,11 @@ const swaggerJsDoc = require('swagger-jsdoc');
 //npm install redoc-express
 const redoc = require('redoc-express');
 
-const PORT = process.env.PORT || 8084;
-const HOST = process.env.HOST;
-const USER = process.env.USER;
-const PASSWORD = process.env.PASSWORD;
-const DATABASE = process.env.DATABASE;
+const PORT = process.env.MYSQLPORT || 8084;
+const HOST = process.env.MYSQLHOST;
+const USER = process.env.MYSQLUSER;
+const PASSWORD = process.env.MYSQL_ROOT_PASSWORD;
+const DATABASE = process.env.MYSQL_DATABASE;
 
 var accessLogStream = fs.createWriteStream(path.join(__dirname,'access.log'),{flags:'a'});
 app.use(morgan('combined',{stream:accessLogStream}));
