@@ -1,0 +1,9 @@
+ {
+    "openapi": "3.0.0",
+    "info": {
+    "title": "API Comida Mexicana",
+    "version": "1.0.0",
+    "description":"La comida mexicana es conocida por su diversidad, colorido y sabores vibrantes. Se caracteriza por el uso de ingredientes frescos y auténticos, así como por la combinación única de especias y técnicas de cocina tradicionales. Los platillos mexicanos a menudo incorporan maíz, frijoles, chiles, aguacates, tomates, y una variedad de carnes como pollo, res, cerdo y mariscos. La gastronomía mexicana es famosa por sus salsas picantes, tortillas de maíz, guacamole, tamales, enchiladas, tacos, y platillos icónicos como el mole y el pozole. Además, la comida mexicana refleja la rica historia y fusión de influencias indígenas, españolas y africanas, creando una mezcla única de sabores que varía según las regiones del país. Los contrastes de sabores, la frescura de los ingredientes y la presentación artística son elementos distintivos de la comida mexicana, que ha sido reconocida como Patrimonio Inmaterial de la Humanidad por la UNESCO. En resumen, la cocina mexicana es una expresión cultural que celebra la diversidad, la tradición y el amor por los alimentos frescos y auténticos."
+    },
+    "servers":[{"url": "http://localhost:8084"}]    
+}
