@@ -6,6 +6,7 @@
 //npm i swagger-themes
 //npm i dotenv
 //jest
+// "start": "node --env-file .env index.js",
 //supertest
 //npm i morgan
 //npm i mysql
