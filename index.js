@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 
 const app=express();
-const PORT = MYSQLPORT || 3977;
+const PORT = process.env.MYSQLPORT || 3977;
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
