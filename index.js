@@ -27,11 +27,12 @@ const swaggerJsDoc = require('swagger-jsdoc');
 //npm install redoc-express
 const redoc = require('redoc-express');
 
-const PORT = process.env.MYSQLPORT || 8084;
+const PORT = process.env.PORT || 8084;
 const HOST = process.env.MYSQLHOST;
 const USER = process.env.MYSQLUSER;
 const PASSWORD = process.env.MYSQLPASSWORD;
 const DATABASE = process.env.MYSQL_DATABASE;
+const MYSQLPORT= process.env.MYSQLPORT;
 
 var accessLogStream = fs.createWriteStream(path.join(__dirname,'access.log'),{flags:'a'});
 app.use(morgan('combined',{stream:accessLogStream}));
@@ -95,7 +96,8 @@ app.get("/platillos", async (req, res) => {
            host: HOST,
            user: USER,
            password: PASSWORD,
-           database: DATABASE
+           database: DATABASE,
+           port: MYSQLPORT
        });
        const [rows, fields] = await conn.query('SELECT * FROM Platillo');
        res.json(rows);
@@ -150,7 +152,8 @@ app.get("/platillos/:id", async (req, res) => {
             host: HOST,
             user: USER,
             password: PASSWORD,
-            database: DATABASE
+            database: DATABASE,
+            port: MYSQLPORT
         });
         const [rows, fields] = await conn.query('SELECT * FROM Platillo WHERE id = ?', [req.params.id]);
 
@@ -216,7 +219,8 @@ app.post("/platillos", async (req, res) => {
         host: HOST,
         user: USER,
         password: PASSWORD,
-        database: DATABASE
+        database: DATABASE,
+        port: MYSQLPORT
     });
 
        const {
@@ -302,7 +306,8 @@ app.put("/platillos/:id", async (req, res) => {
         host: HOST,
         user: USER,
         password: PASSWORD,
-        database: DATABASE
+        database: DATABASE,
+        port: MYSQLPORT
     });
 
        const [checkRows, checkFields] = await conn.query('SELECT * FROM Platillo WHERE id = ?', [req.params.id]);
@@ -364,7 +369,8 @@ app.delete("/platillos/:id", async (req, res) => {
            host: HOST,
            user: USER,
            password: PASSWORD,
-           database: DATABASE
+           database: DATABASE,
+           port: MYSQLPORT
        });
 
        const [checkRows, checkFields] = await conn.query('SELECT * FROM Platillo WHERE id = ?', [req.params.id]);
