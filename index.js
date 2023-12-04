@@ -22,9 +22,6 @@ const path=require('path');
 const mysql =require('mysql2/promise');
 const app=express();
 var cors=require('cors');
-const basicAuth = require('express-basic-auth');
-//express body-parser
-const bodyParser = require('body-parser');
 const swaggerUI = require('swagger-ui-express');
 const swaggerJsDoc = require('swagger-jsdoc');
 //npm install redoc-express
@@ -47,21 +44,6 @@ const options = {
    customCss: theme.getBuffer('monokai')
  };
 
-
-// Middleware para procesar application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }));
-
-// Configurar el middleware de autenticación básica
-const auth = basicAuth({
-   users: { 'Barrabasito': '1234' }, // Aquí debes proporcionar tu usuario de GitHub y tu token personal
-   challenge: true, // Esto enviará un encabezado WWW-Authenticate para solicitar autenticación
-   unauthorizedResponse: 'Acceso no autorizado', // Mensaje en caso de autenticación fallida
- });
- 
- // Ruta protegida que requiere autenticación
- app.get('/ruta-protegida', auth, (req, res) => {
-   res.send('¡Acceso permitido!');
- });
 
 /**
  * @swagger
@@ -410,7 +392,6 @@ app.delete("/platillos/:id", async (req, res) => {
     apis: [`${path.join(__dirname,"./index.js")}`],
  }
 
-
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
 app.use("/api-docs",swaggerUI.serve,swaggerUI.setup(swaggerDocs,options));
 
@@ -418,9 +399,7 @@ app.use("/api-docs-json",(req,res)=>{
    res.json(swaggerDocs);
 });
 
-
- // define title and specUrl location
- // serve redoc
+ // server redoc
  app.get(
    '/api-docs-redoc',
    redoc({
@@ -453,7 +432,7 @@ app.use("/api-docs-json",(req,res)=>{
      }
    })
  );
- 
+
 
 app.listen(PORT,()=>{
     console.log("Servidor express escuchando en el puerto " + PORT);
